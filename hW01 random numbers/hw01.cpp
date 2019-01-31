@@ -72,7 +72,7 @@ int main(){
 			break;
 
 			default:
-				cout<<"Please enter a number between "
+				cout<<"Please enter a number between 0 and 3"<<endl<<endl;
 		}
 
 	}

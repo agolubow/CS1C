@@ -1,0 +1,72 @@
+Script started on Wed 23 Jan 2019 09:14:51 PM PST
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hW01 random numbers[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hW01 random numbers[00m$ hw[K[Kdate
+Wed Jan 23 21:14:57 PST 2019
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hW01 random numbers[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hW01 random numbers[00m$ ls -l
+total 8
+-rw-r--r-- 1 cs1stud cs1stud 3006 Jan 23 21:10 hw01.cpp
+-rw-r--r-- 1 cs1stud cs1stud    0 Jan 23 21:14 hw01.scr
+-rw-r--r-- 1 cs1stud cs1stud  452 Jan 23 21:09 Makefile
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hW01 random numbers[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hW01 random numbers[00m$ g++ hw01.cpp -o hw01 -Wa ll
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hW01 random numbers[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hW01 random numbers[00m$ ls -l
+total 28
+-rwxr-xr-x 1 cs1stud cs1stud 19528 Jan 23 21:15 [0m[01;32mhw01[0m
+-rw-r--r-- 1 cs1stud cs1stud  3006 Jan 23 21:10 hw01.cpp
+-rw-r--r-- 1 cs1stud cs1stud     0 Jan 23 21:14 hw01.scr
+-rw-r--r-- 1 cs1stud cs1stud   452 Jan 23 21:09 Makefile
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hW01 random numbers[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hW01 random numbers[00m$ ./hw01
+Your random number is 125
+Please select one.
+1. Sum the digits
+2. Triple the number
+3. Reverse the digits
+0. Quit
+
+1
+The digits summed is 8
+
+Press enter to continue...
+
+Your random number is 156
+Please select one.
+1. Sum the digits
+2. Triple the number
+3. Reverse the digits
+0. Quit
+
+2
+The number tripled is 468
+
+Press enter to continue...
+
+Your random number is 143
+Please select one.
+1. Sum the digits
+2. Triple the number
+3. Reverse the digits
+0. Quit
+
+3
+The number reversed is 341
+
+Press enter to continue...
+
+Your random number is 473
+Please select one.
+1. Sum the digits
+2. Triple the number
+3. Reverse the digits
+0. Quit
+
+0
+188115792 191075712 449739122 831093836 925024160 1047496309 1622973178 1848337771 1965462182 2031639425 
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hW01 random numbers[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hW01 random numbers[00m$ ls -l
+total 32
+-rwxr-xr-x 1 cs1stud cs1stud 19528 Jan 23 21:15 [0m[01;32mhw01[0m
+-rw-r--r-- 1 cs1stud cs1stud  3006 Jan 23 21:10 hw01.cpp
+-rw-r--r-- 1 cs1stud cs1stud     0 Jan 23 21:14 hw01.scr
+-rw-r--r-- 1 cs1stud cs1stud   105 Jan 23 21:16 hw01.txt
+-rw-r--r-- 1 cs1stud cs1stud   452 Jan 23 21:09 Makefile
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hW01 random numbers[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hW01 random numbers[00m$ exit
+exit
+
+Script done on Wed 23 Jan 2019 09:17:08 PM PST
