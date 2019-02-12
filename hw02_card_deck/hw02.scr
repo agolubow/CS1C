@@ -1,0 +1,193 @@
+Script started on Wed 30 Jan 2019 09:13:44 PM PST
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hw02_card_deck[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hw02_card_deck[00m$ date
+Wed Jan 30 21:13:52 PST 2019
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hw02_card_deck[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hw02_card_deck[00m$ ls -l
+total 16
+-rw-r--r-- 1 cs1stud cs1stud 1423 Jan 30 21:11 cardDeckClass.cpp
+-rw-r--r-- 1 cs1stud cs1stud  648 Jan 30 21:12 cardDeckClass.h
+-rw-r--r-- 1 cs1stud cs1stud  518 Jan 30 21:11 hw02.cpp
+-rw-r--r-- 1 cs1stud cs1stud    0 Jan 30 21:13 hw02.scr
+-rw-r--r-- 1 cs1stud cs1stud  367 Jan 30 21:09 Makefile
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hw02_card_deck[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hw02_card_deck[00m$ make all
+g++ -std=c++14 -Wall -g -c cardDeckClass.cpp -o cardDeckClass.o
+g++ -std=c++14 -Wall -g hw02.cpp -o hw02 cardDeckClass.o
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hw02_card_deck[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hw02_card_deck[00m$ ls -l
+total 232
+-rw-r--r-- 1 cs1stud cs1stud   1423 Jan 30 21:11 cardDeckClass.cpp
+-rw-r--r-- 1 cs1stud cs1stud    648 Jan 30 21:12 cardDeckClass.h
+-rw-r--r-- 1 cs1stud cs1stud 112480 Jan 30 21:14 cardDeckClass.o
+-rwxr-xr-x 1 cs1stud cs1stud 102496 Jan 30 21:14 [0m[01;32mhw02[0m
+-rw-r--r-- 1 cs1stud cs1stud    518 Jan 30 21:11 hw02.cpp
+-rw-r--r-- 1 cs1stud cs1stud      0 Jan 30 21:13 hw02.scr
+-rw-r--r-- 1 cs1stud cs1stud    367 Jan 30 21:09 Makefile
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hw02_card_deck[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hw02_card_deck[00m$ ./hw02
+-----INITIAL DECK-----
+
+   1. Ace    of Hearts
+   2. Two    of Hearts
+   3. Three  of Hearts
+   4. Four   of Hearts
+   5. Five   of Hearts
+   6. Six    of Hearts
+   7. Seven  of Hearts
+   8. Eight  of Hearts
+   9. Nine   of Hearts
+  10. Ten    of Hearts
+  11. Jack   of Hearts
+  12. Queen  of Hearts
+  13. King   of Hearts
+  14. Ace    of Clubs
+  15. Two    of Clubs
+  16. Three  of Clubs
+  17. Four   of Clubs
+  18. Five   of Clubs
+  19. Six    of Clubs
+  20. Seven  of Clubs
+  21. Eight  of Clubs
+  22. Nine   of Clubs
+  23. Ten    of Clubs
+  24. Jack   of Clubs
+  25. Queen  of Clubs
+  26. King   of Clubs
+  27. Ace    of Diamonds
+  28. Two    of Diamonds
+  29. Three  of Diamonds
+  30. Four   of Diamonds
+  31. Five   of Diamonds
+  32. Six    of Diamonds
+  33. Seven  of Diamonds
+  34. Eight  of Diamonds
+  35. Nine   of Diamonds
+  36. Ten    of Diamonds
+  37. Jack   of Diamonds
+  38. Queen  of Diamonds
+  39. King   of Diamonds
+  40. Ace    of Spades
+  41. Two    of Spades
+  42. Three  of Spades
+  43. Four   of Spades
+  44. Five   of Spades
+  45. Six    of Spades
+  46. Seven  of Spades
+  47. Eight  of Spades
+  48. Nine   of Spades
+  49. Ten    of Spades
+  50. Jack   of Spades
+  51. Queen  of Spades
+  52. King   of Spades
+
+--AFTER FIRST SHUFFLE--
+
+   1. Ace    of Hearts
+   2. Ace    of Diamonds
+   3. Two    of Hearts
+   4. Two    of Diamonds
+   5. Three  of Hearts
+   6. Three  of Diamonds
+   7. Four   of Hearts
+   8. Four   of Diamonds
+   9. Five   of Hearts
+  10. Five   of Diamonds
+  11. Six    of Hearts
+  12. Six    of Diamonds
+  13. Seven  of Hearts
+  14. Seven  of Diamonds
+  15. Eight  of Hearts
+  16. Eight  of Diamonds
+  17. Nine   of Hearts
+  18. Nine   of Diamonds
+  19. Ten    of Hearts
+  20. Ten    of Diamonds
+  21. Jack   of Hearts
+  22. Jack   of Diamonds
+  23. Queen  of Hearts
+  24. Queen  of Diamonds
+  25. King   of Hearts
+  26. King   of Diamonds
+  27. Ace    of Clubs
+  28. Ace    of Spades
+  29. Two    of Clubs
+  30. Two    of Spades
+  31. Three  of Clubs
+  32. Three  of Spades
+  33. Four   of Clubs
+  34. Four   of Spades
+  35. Five   of Clubs
+  36. Five   of Spades
+  37. Six    of Clubs
+  38. Six    of Spades
+  39. Seven  of Clubs
+  40. Seven  of Spades
+  41. Eight  of Clubs
+  42. Eight  of Spades
+  43. Nine   of Clubs
+  44. Nine   of Spades
+  45. Ten    of Clubs
+  46. Ten    of Spades
+  47. Jack   of Clubs
+  48. Jack   of Spades
+  49. Queen  of Clubs
+  50. Queen  of Spades
+  51. King   of Clubs
+  52. King   of Spades
+
+------FINAL DECK------
+
+   1. Ace    of Hearts
+   2. Two    of Hearts
+   3. Three  of Hearts
+   4. Four   of Hearts
+   5. Five   of Hearts
+   6. Six    of Hearts
+   7. Seven  of Hearts
+   8. Eight  of Hearts
+   9. Nine   of Hearts
+  10. Ten    of Hearts
+  11. Jack   of Hearts
+  12. Queen  of Hearts
+  13. King   of Hearts
+  14. Ace    of Clubs
+  15. Two    of Clubs
+  16. Three  of Clubs
+  17. Four   of Clubs
+  18. Five   of Clubs
+  19. Six    of Clubs
+  20. Seven  of Clubs
+  21. Eight  of Clubs
+  22. Nine   of Clubs
+  23. Ten    of Clubs
+  24. Jack   of Clubs
+  25. Queen  of Clubs
+  26. King   of Clubs
+  27. Ace    of Diamonds
+  28. Two    of Diamonds
+  29. Three  of Diamonds
+  30. Four   of Diamonds
+  31. Five   of Diamonds
+  32. Six    of Diamonds
+  33. Seven  of Diamonds
+  34. Eight  of Diamonds
+  35. Nine   of Diamonds
+  36. Ten    of Diamonds
+  37. Jack   of Diamonds
+  38. Queen  of Diamonds
+  39. King   of Diamonds
+  40. Ace    of Spades
+  41. Two    of Spades
+  42. Three  of Spades
+  43. Four   of Spades
+  44. Five   of Spades
+  45. Six    of Spades
+  46. Seven  of Spades
+  47. Eight  of Spades
+  48. Nine   of Spades
+  49. Ten    of Spades
+  50. Jack   of Spades
+  51. Queen  of Spades
+  52. King   of Spades
+
+The original deck was shuffled 8 times before returning to its original configuration
+]0;cs1stud@cs1vbox: ~/cs1c_work/CS1C/hw02_card_deck[01;32mcs1stud@cs1vbox[00m:[01;34m~/cs1c_work/CS1C/hw02_card_deck[00m$ exit
+exit
+
+Script done on Wed 30 Jan 2019 09:14:31 PM PST
