@@ -38,6 +38,10 @@ int mgmt::ManageInventory::getCount() const{
 	return count;
 }
 
+int mgmt::ManageInventory::getTransactionCount() const{
+	return transactCount;
+}
+
 void mgmt::ManageInventory::incrementTransactionCount(){
 	transactCount++;
 }
@@ -47,12 +51,15 @@ void mgmt::ManageInventory::setTransactionName(string n){
 	p_pTransactions[transactCount]->setName(n);
 }
 
+mgmt::Transaction ** mgmt::ManageInventory::getTransactionPointer() const{
+	return p_pTransactions;
+}
+
 void mgmt::ManageInventory::printTransactionHistory() const{
 	for(int i=0;i<transactCount;i++){
-		cout <<(i+1)<<". "<<"Name: "<<p_pTransactions[i]->getName();
-		cout << "----------Order items----------"<<endl;
+		cout <<endl<<endl<<(i+1)<<". "<<"Name: "<<p_pTransactions[i]->getName();
+		cout <<endl<<endl<<"-----------------Order items-----------------"<<endl<<endl;
 		p_pTransactions[i]->printItems();
-		cout << "Before Tax: $"<<p_pTransactions[i]->getBeforeTax()<<"   "<<"Total: $"<<p_pTransactions[i]->getTotal();
 	}
 }
 
@@ -64,9 +71,10 @@ int mgmt::Transaction::getItemCount() const{
 
 void mgmt::Transaction::printItems() const{
 	for(int i=0;i<itemCount;i++){
-		cout << p_pOrderItems[i]->name<<"  "<< p_pOrderItems[i]->quantity <<"  $"<<p_pOrderItems[i]->cost<<endl;
-		cout <<"__________________________________________________"<<endl;
+		cout <<left<<setw(20)<<p_pOrderItems[i]->name<<"  "<<setw(5)<<p_pOrderItems[i]->quantity <<"  $"<<p_pOrderItems[i]->cost<<endl;
+		cout <<"_____________________________________________"<<endl;
 	}
+	cout << "Before Tax: $"<<getBeforeTax()<<"   "<<"Total: $"<<getTotal()<<endl;
 }
 
 float mgmt::Transaction::getTotal() const{

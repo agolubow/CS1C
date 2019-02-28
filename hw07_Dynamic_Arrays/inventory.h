@@ -22,7 +22,7 @@ const int MAX_SIZE = 50;
 	class Transaction{
 
 	public:
-		Transaction() : itemCount{0},p_pOrderItems{new Item*[5]},totalCost {0.00} {}
+		Transaction() : itemCount{0},p_pOrderItems{new Item*[5]},totalCost {0.00},beforeTax{0.00} {}
 		~Transaction();
 		int getItemCount() const;
 		void printItems() const;
@@ -52,6 +52,8 @@ const int MAX_SIZE = 50;
 			void addItemToTransaction(int,int);
 			void incrementTransactionCount();
 			int getCount() const;
+			int getTransactionCount() const;
+			Transaction ** getTransactionPointer() const;
 		private:
 			int size {MAX_SIZE};
 			int count;

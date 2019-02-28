@@ -14,20 +14,40 @@ int main(){
 	inventory->addItem("Brooks running shoes",11,111.44);
 	inventory->addItem("Asics running shoes",20,165.88);
 	inventory->addItem("Nike shorts",77,45.77);
+	cout <<endl<<"----------Inventory before transaction----------"<<endl<<endl;
 	inventory->printInventory();
 
-	cout << "Please Enter your name: ";
+	cout <<endl<<"Please Enter your name: ";
 	cin >> (customer);
 	inventory->setTransactionName(customer);
 	do{
 		inventory->printInventory();
-		cout <<"Please enter the number of the item you wish to purchase: ";
+		cout <<endl<<endl<<"Please enter the number of the item you wish to purchase: ";
 		cin >> item;
 		cout <<"Please enter the quantity you wish to purchase: ";
 		cin >> quantity;
 		inventory->addItemToTransaction(item,quantity);
+		cout <<endl<<"Would you like to add another item to your order? (Y/N): ";
+		cin >> answer;
+		cout<<endl;
 
 	}while(answer != 'n' && answer != 'N');
+
+	cout <<endl<<"----------------RECEIPT----------------"<<endl<<endl;
+	inventory->getTransactionPointer()[inventory->getTransactionCount()]->computeTotal();
+	inventory->getTransactionPointer()[inventory->getTransactionCount()]->printItems();
+	inventory->incrementTransactionCount();
+
+	//extra credit portion
+
+	inventory->setTransactionName("Alex");
+	inventory->addItemToTransaction(3,2);
+	inventory->addItemToTransaction(5,3);
+	inventory->getTransactionPointer()[inventory->getTransactionCount()]->computeTotal();
+	inventory->incrementTransactionCount();
+	
+	cout <<endl<<endl<<"----------------EXTRA CREDIT-----------------"<<endl<<endl;
+	inventory->printTransactionHistory();
 
 	return 0;
 }
