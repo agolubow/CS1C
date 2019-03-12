@@ -59,7 +59,7 @@ const int MAX_SIZE = 50;
 			int count;
 			int transactCount;
 			Item ** p_pInventoryItems;
-			Transaction ** p_pTransactions;
+			Transaction ** p_pTransactions;s
 	};
 
 }
