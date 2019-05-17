@@ -41,8 +41,11 @@ template<typename InputIterator, typename EqualityComparable>
 InputIterator find(InputIterator first,InputIterator last, const EqualityComparable& val) 
     // find the first element in [first,last) that equals value
 {
-    for (InputIterator p = first; p!=last; ++p)
-        if (*p==val) return p;
+    for (InputIterator p = first; p!=last; ++p){
+        if (*p==val){
+            return p;
+        }
+    }
     return last;
 }
 
@@ -50,9 +53,9 @@ template<typename InputIterator, typename EqualityComparable>
 InputIterator find_improved(InputIterator first,InputIterator last, const EqualityComparable& val) 
     // find the first element in [first,last) that equals value
 {
-    while (first!=last && *first!=val) {
-	   ++first;
-	}
+    while(first !=last && !(*first ==val)){
+        ++first;
+    }
     return first; // included so that incomplete lab code will compile
 }
 
@@ -62,32 +65,33 @@ template<typename InputIterator, typename Predicate>
 InputIterator find_if(InputIterator first, InputIterator last, Predicate pred)
     // find the first element in [first,last) that satisfies predicate
 {
-    while (first!=last && !pred(*first)) {
-	   ++first;
-	}
+    while(first!=last && !pred(*first)){
+        ++first;
+    }
     return first; // included so that incomplete lab code will compile
 }
 
 //--Q#2-------------------------------------------------------------------------
 
-bool even(int x) { return (x%2 == 0); } // test for even ints via modulo
+bool even(int x) {return (x%2==0);} // test for even ints via modulo
 
 //------------------------------------------------------------------------------
 
-bool less_than_31(int x) { return (x<31); } //test to see if x is less than 31
+bool less_than_31(int x) {return (x<31);}
 
 //------------------------------------------------------------------------------
 
 int global_value; // the value to which less_than_v() compares its argument
-bool less_than_v(int x) { return (x<global_value); }
+bool less_than_v(int x) {return (x<global_value);}
 
 //--Q#3-------------------------------------------------------------------------
 
-class less_than{
-	int v;
-	public:
+// Less_than function object class definition goes here
+class Less_than{
+        int v; 
+    public:
         Less_than(int v):v{v}{ }//store value
-        bool operator()(int x) const {return x < v;} //compare
+        bool operator()(int x) const {return (x<v);} //compare
 };
 
 //--Q#4-------------------------------------------------------------------------
@@ -133,26 +137,26 @@ struct Square : public Shape
 // comparisons for Shape* objects:
 
 struct Cmp_by_id {
-    bool operator()(const Shape* s1, const Shape* s2) const{
-    	return (s1->id == s2->id); 
-    } // dereference pointer, compare ids
+    bool operator()(const Shape* s1,const Shape* s2)const{return s1->id<s2->id;} // dereference pointer, compare ids
 };
 
 //------------------------------------------------------------------------------
 
 struct Cmp_by_perimeter{
-	bool operator()(const Shape* s1, const Shape* s2) const{
-		return (s1->calc_perimeter() == s2->calc_perimeter());
-	}
+    bool operator()(const Shape* s1, const Shape* s2) const{
+        return (s1->calc_perimeter()<s2->calc_perimeter());
+    }
 };
+ 
 
 //------------------------------------------------------------------------------
 
-struct Cmp_by_area{
-	bool operator()(const Shape* s1, const Shape* s2) const{
-		return (s1->calc_area() == s2->calc_area());
-	}
+struct Cmp_by_area {
+    bool operator()(const Shape* s1, const Shape* s2) const{
+        return (s1->calc_area()<s2->calc_area());
+    }
 };
+ 
 
 //--Q#5-------------------------------------------------------------------------
 
@@ -176,12 +180,13 @@ template<typename In, typename Out, typename Pred>
     //          Predicate<Pred, Value_type<In>>
 Out copy_if(In first, In last, Out result, Pred pred)
     // copy elements from [first,last) to result that sastisfy predicate
-{
-    while (pred(first,last)) {
-        *result = *first; // copy element
-        ++result;
-        ++first;
-    }
+{   
+    while(first != last){
+        if(pred(*first)){
+            *result++ = *first;
+        }
+        first++;
+    }  
     return result; // included so that incomplete lab code will compile
 }
 
@@ -190,19 +195,16 @@ Out copy_if(In first, In last, Out result, Pred pred)
 template<typename Val>
     // requires LessThan_comparable<Val>
 class Range_low_to_high {
-
-public:
-	Range_low_to_high(Val low,Val high):low{low},high{high}{}	
-	bool operator()(Val elem){ return (low <= elem&&elem <= high);}
-
-private:
-	Val low;
-	Val high;
+        Val low;
+        Val high;
+    public:
+        Range_low_to_high(Val l,Val h):low(l),high(h){}
+        bool operator()(Val elem)const{return (low<=elem && elem<=high);}
 };
 
 //------------------------------------------------------------------------------
 
-} // hw16
+}; // hw16
 
 //------------------------------------------------------------------------------
 
@@ -220,116 +222,120 @@ int main()
 	cout << "************************************** " << endl;
 	cout << "*            Running hw16            * " << endl;
 	cout << "*   Programmed by Alexander Golubow  * " << endl;
-	cout << "*        Tues/thurs 3:00-5:30        * " << endl;
+	cout << "*       Tues/Thurs 3:00 - 5:30       * " << endl;
 	cout << "************************************** " << endl;
 	cout << endl;
 
-    // NOTE: uncomment code below once algorithm definitions Q#1-5 are complete
 
-	// // Q#1 - find algorithm
+     // Q#1 - find algorithm
+    cout <<"-------------Q#1-------------"<<endl<<endl;
 
-    vector<int> v = {40,5,4,3,2,-99,100,10,500,5}; // init stl vector of ints using initializer list
+     vector<int> v = {40,5,4,3,2,-99,100,10,500,5}; // init stl vector of ints using initializer list
 
-    // print vector v
-    cout << "vector v: ";
-    for (const auto& x : v) cout << x << " "; // use auto type deduction (x is an int),
-    cout << endl << endl;                     // range-for-loop to print v
+     // print vector v
+     cout << "vector v: ";
+     for (const auto& x : v) cout << x << " "; // use auto type deduction (x is an int),
+     cout << endl << endl;                     // range-for-loop to print v
 
-    int x = 5;
-    vector<int>::iterator p = hw16::find(v.begin(),v.end(),x); // find value of 5 in v
-    if (p!=v.end())
-        cout << "find alg: found value of in vector v " << *p << endl << endl;
-    else
-        cout << "find alg: can't find value in vector v" << endl << endl;
+     int x = 5;
+     vector<int>::iterator p = hw16::find(v.begin(),v.end(),x); // find value of 5 in v
+     if (p!=v.end())
+         cout << "find alg: found value of in vector v " << *p << endl << endl;
+     else
+         cout << "find alg: can't find value in vector v" << endl << endl;
 
-	// Q#2 - find_if algorithm with predicates
-                                                    // find first even int in v
-    auto q = hw16::find_if(v.begin(),v.end(),even); // use auto-type deduction for output iterator q
-    if (q!=v.end())                                 // (q is a vector<int>::iterator)
-        cout << "find_if alg: found even value of in vector v " << *q << endl;
-    else
-        cout << "find_if alg: can't find even value in vector v" << endl;
+     // Q#2 - find_if algorithm with predicates
+     cout <<"-------------Q#2-------------"<<endl<<endl;
+                                                     // find first even int in v
+     auto q = hw16::find_if(v.begin(),v.end(),even); // use auto-type deduction for output iterator q
+     if (q!=v.end())                                 // (q is a vector<int>::iterator)
+         cout << "find_if alg: found even value of in vector v " << *q << endl;
+     else
+         cout << "find_if alg: can't find even value in vector v" << endl;
 
-    p = hw16::find_if(v.begin(),v.end(),less_than_31); // find first int in v less than 31
-    if (p!=v.end())
-        cout << "find_if alg: found less_than_31 value of in vector v " << *p << endl;
-    else
-        cout << "find_if alg: can't find less_than_31 value in vector v" << endl;
+     p = hw16::find_if(v.begin(),v.end(),less_than_31); // find first int in v less than 31
+     if (p!=v.end())
+         cout << "find_if alg: found less_than_31 value of in vector v " << *p << endl;
+     else
+         cout << "find_if alg: can't find less_than_31 value in vector v" << endl;
 
-    global_value = -100;
-    p = hw16::find_if(v.begin(),v.end(),less_than_v); // find first int in v less than -100
-    if (p!=v.end())
-        cout << "find_if alg: found less_than_v value of in vector v " << *p << endl << endl;
-    else
-        cout << "find_if alg: can't find less_than_v value in vector v" << endl << endl;
+     global_value = -100;
+     p = hw16::find_if(v.begin(),v.end(),less_than_v); // find first int in v less than -100
+     if (p!=v.end())
+         cout << "find_if alg: found less_than_v value of in vector v " << *p << endl << endl;
+     else
+         cout << "find_if alg: can't find less_than_v value in vector v" << endl << endl;
 
-	// Q#3 - find_if algorithm with function objects
+     // Q#3 - find_if algorithm with function objects
+     cout <<"-------------Q#3-------------"<<endl<<endl;
 
-    p = hw16::find_if(v.begin(),v.end(),Less_than(4)); // find first int in v less than 4
-    if (p!=v.end())
-        cout << "find_if alg: found Less_than(4) value of in vector v " << *p << endl << endl;
-    else
-        cout << "find_if alg: can't find Less_than(4) value in vector v" << endl << endl;
+     p = hw16::find_if(v.begin(),v.end(),Less_than(4)); // find first int in v less than 4
+     if (p!=v.end())
+         cout << "find_if alg: found Less_than(4) value of in vector v " << *p << endl << endl;
+     else
+         cout << "find_if alg: can't find Less_than(4) value in vector v" << endl << endl;
 
-	// Q#4 - sort algorithm + Shape class, function objects
+     // Q#4 - sort algorithm + Shape class, function objects
+     cout <<"-------------Q#4-------------"<<endl<<endl;
 
-    vector<Shape*> vs;
-    vs.push_back(new Line{10,5,-1});       // store pointer to line1 in vs
-    vs.push_back(new Line{5,10,-1});       // store pointer to line2 in vs
-    vs.push_back(new Line{1,15,-1});       // store pointer to line3 in vs
-    vs.push_back(new Square{100,400,625}); // store pointer to square1 in vs
-    vs.push_back(new Square{101,40,100});  // store pointer to square2 in vs
-    vs.push_back(new Square{102,60,225});  // store pointer to square3 in vs
+     vector<Shape*> vs;
+     vs.push_back(new Line{10,5,-1});       // store pointer to line1 in vs
+     vs.push_back(new Line{5,10,-1});       // store pointer to line2 in vs
+     vs.push_back(new Line{1,15,-1});       // store pointer to line3 in vs
+     vs.push_back(new Square{100,400,625}); // store pointer to square1 in vs
+     vs.push_back(new Square{101,40,100});  // store pointer to square2 in vs
+     vs.push_back(new Square{102,60,225});  // store pointer to square3 in vs
 
-    std::sort(vs.begin(),vs.end(),Cmp_by_id()); // sort shapes by id (using std sort algorithm)
-    cout << "shapes sorted by id: ";
-    for (const auto x : vs) cout << *x << " "; // use auto type deduction (x is a Shape*),
-    cout << endl << endl;                      // range-for-loop to print vs
+     std::sort(vs.begin(),vs.end(),Cmp_by_id()); // sort shapes by id (using std sort algorithm)
+     cout << "shapes sorted by id: ";
+     for (const auto x : vs) cout << *x << " "; // use auto type deduction (x is a Shape*),
+     cout << endl << endl;                      // range-for-loop to print vs
 
-    std::sort(vs.begin(),vs.end(),Cmp_by_perimeter()); // sort shapes by perimeter
-    cout << "shapes sorted by perimeter: " << endl;
-    for (const auto x : vs)
-    {
-        cout << "id " << *x;
-        cout << ", perimeter " << x->calc_perimeter() << endl;
-    }
-    cout << endl;
+     std::sort(vs.begin(),vs.end(),Cmp_by_perimeter()); // sort shapes by perimeter
+     cout << "shapes sorted by perimeter: " << endl;
+     for (const auto x : vs)
+     {
+         cout << "id " << *x;
+         cout << ", perimeter " << x->calc_perimeter() << endl;
+     }
+     cout << endl;
 
-    std::sort(vs.begin(),vs.end(),Cmp_by_area()); // sort shapes by area
-    cout << "shapes sorted by area: " << endl;
-    for (const auto x : vs)
-    {
-        cout << "id " << *x;
-        cout << ", area " << x->calc_area() << endl;
-    }
-    cout << endl;
+     std::sort(vs.begin(),vs.end(),Cmp_by_area()); // sort shapes by area
+     cout << "shapes sorted by area: " << endl;
+     for (const auto x : vs)
+     {
+         cout << "id " << *x;
+         cout << ", area " << x->calc_area() << endl;
+     }
+     cout << endl;
 
-    // free all shapes
-    for (Shape* pS : vs) delete pS; // delete all shape objects, otherwise memory will leak
+     // free all shapes
+     for (Shape* pS : vs) delete pS; // delete all shape objects, otherwise memory will leak
 
-	// Q#5 - copy_if algorithm with function objects
+     // Q#5 - copy_if algorithm with function objects
+    cout <<"-------------Q#5-------------"<<endl<<endl;
 
-    try
-    {
-        list<int> l(v.size()); // create a stl list with size = v size
+     try
+     {
+         list<int> l(v.size()); // create a stl list with size = v size
 
-        if (l.size() < v.size()) throw length_error("target container too small"); // throw exceptoin when
-        // copy elements from vector v to list l within range 5 <= elem <= 50      // target container too small
-        hw16::copy_if(v.begin(), v.end(), l.begin(), Range_low_to_high<int>(5,50));
+         if (l.size() < v.size()) throw length_error("target container too small"); // throw exceptoin when
+         // copy elements from vector v to list l within range 5 <= elem <= 50      // target container too small
+         hw16::copy_if(v.begin(), v.end(), l.begin(), Range_low_to_high<int>(5,50));
         
-        // print list l
-        cout << "list l: ";
-        for (const auto& x : l) cout << x << " ";
-        cout << endl << endl;
-    }
-    catch (exception& e) {
-        cerr << "error: " << e.what() << endl; 
-        return 1;
-    }
-    catch (...) {
-        cerr << "Oops: unknown exception!" << endl; 
-        return 2;
-    }
+         // print list l
+         cout << "list l: ";
+         for (const auto& x : l) cout << x << " ";
+         cout << endl << endl;
+     }
+     catch (exception& e) {
+         cerr << "error: " << e.what() << endl;
+         return 1;
+     }
+     catch (...) {
+         cerr << "Oops: unknown exception!" << endl;
+         return 2;
+     }
 
 
     return 0;
@@ -339,7 +345,13 @@ int main()
 
 // WRITTEN ANSWERS
 
-// Q#1
+/* Q#1
+    InputIterator must support pre-increment,post-increment,read operations,assignment operations and dereferencing of pointers.
+    EqualityComparable must support equality comparison operations with the values that are read and dereferenced by the InputIterator.
+*/
 
-// Q#5
-
+/* Q#5
+    Type In must support pre-increment,post-increment,read operations,assignment operations and dereferencing of pointers.
+    Type Out must support dereferencing and assignment operations.
+    The predicate is a functor that must support lessThan comparable operations. The client decides how to implement these.
+*/
